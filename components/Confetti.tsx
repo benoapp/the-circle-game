@@ -33,7 +33,7 @@ export default function Confetti() {
     };
 
     let particles: Particle[] = [];
-    const colors = ["#D4AF37", "#ffffff", "#000000", "#facc15", "#38bdf8", "#22c55e", "#ef4444"];
+    const colors = ["#EC4899", "#ffffff", "#F9A8D4", "#FBCFE8", "#F472B6", "#FB7185", "#D4AF37"];
     const emitters = [
       { x: () => window.innerWidth / 2, y: () => window.innerHeight / 2 },
       { x: () => window.innerWidth * 0.18 + Math.random() * 40, y: () => window.innerHeight * 0.22 },

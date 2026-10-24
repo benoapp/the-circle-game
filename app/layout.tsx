@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Beno Circle Master",
+  title: "Beno Circle Queen",
   description: "Draw a perfect circle to win exclusive Beno prizes.",
 };
 

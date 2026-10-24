@@ -58,10 +58,10 @@ function computeCircleScore(points: Point[]) {
 function getColorByScore(score: number) {
   type RGB = { r: number; g: number; b: number };
   const colors: { min: number; rgb: RGB; hex: string }[] = [
-    { min: 90, rgb: { r: 212, g: 175, b: 55 }, hex: "#D4AF37" }, // Beno Gold
-    { min: 75, rgb: { r: 56, g: 189, b: 248 }, hex: "#38bdf8" }, // sky
-    { min: 55, rgb: { r: 248, g: 113, b: 113 }, hex: "#f87171" }, // soft red
-    { min: 0, rgb: { r: 30, g: 64, b: 175 }, hex: "#1d4ed8" }, // deep blue
+    { min: 90, rgb: { r: 236, g: 72, b: 153 }, hex: "#EC4899" }, // vivid pink
+    { min: 75, rgb: { r: 244, g: 114, b: 182 }, hex: "#F472B6" }, // pink
+    { min: 55, rgb: { r: 251, g: 113, b: 133 }, hex: "#FB7185" }, // rose
+    { min: 0, rgb: { r: 157, g: 23, b: 77 }, hex: "#9D174D" }, // deep pink
   ];
   const chosen = colors.find((c) => score >= c.min) ?? colors[colors.length - 1];
   return {
@@ -91,21 +91,21 @@ function smoothPoints(points: Point[]) {
 function BackgroundDeco() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-gradient-to-tr from-[#D4AF37] to-amber-600 opacity-20 blur-3xl animate-blob" />
-      <div className="absolute right-1/4 -top-16 h-64 w-64 rounded-full bg-gradient-to-tr from-rose-500 to-rose-900 opacity-15 blur-3xl animate-blob animation-delay-2000" />
-      <div className="absolute -right-16 top-1/4 h-80 w-80 rounded-full bg-gradient-to-tr from-slate-800 to-slate-600 opacity-30 blur-3xl animate-blob animation-delay-2000" />
-      <div className="absolute left-1/3 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-[#D4AF37] to-yellow-200 opacity-10 blur-3xl animate-blob animation-delay-4000" />
-      <div className="absolute -left-10 bottom-10 h-72 w-72 rounded-full bg-gradient-to-tr from-emerald-400 to-emerald-900 opacity-15 blur-3xl animate-blob animation-delay-4000" />
+      <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-gradient-to-tr from-pink-500 to-rose-700 opacity-20 blur-3xl animate-blob" />
+      <div className="absolute right-1/4 -top-16 h-64 w-64 rounded-full bg-gradient-to-tr from-fuchsia-500 to-pink-900 opacity-15 blur-3xl animate-blob animation-delay-2000" />
+      <div className="absolute -right-16 top-1/4 h-80 w-80 rounded-full bg-gradient-to-tr from-[#3d1226] to-[#1f0a16] opacity-40 blur-3xl animate-blob animation-delay-2000" />
+      <div className="absolute left-1/3 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-pink-400 to-pink-200 opacity-10 blur-3xl animate-blob animation-delay-4000" />
+      <div className="absolute -left-10 bottom-10 h-72 w-72 rounded-full bg-gradient-to-tr from-rose-400 to-fuchsia-900 opacity-15 blur-3xl animate-blob animation-delay-4000" />
     </div>
   );
 }
 
-function SnowOverlay() {
+function PetalOverlay() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 z-[3] overflow-hidden">
-      <div className="snow-overlay absolute inset-0 opacity-65" />
-      <div className="snow-overlay-large absolute inset-0 opacity-40" />
-      <div className="snow-overlay absolute inset-0 scale-125 opacity-30 blur-sm" />
+      <div className="petal-overlay absolute inset-0 opacity-65" />
+      <div className="petal-overlay-large absolute inset-0 opacity-40" />
+      <div className="petal-overlay absolute inset-0 scale-125 opacity-30 blur-sm" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
     </div>
   );
@@ -115,10 +115,10 @@ function WinBurst() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
       <div className="relative flex items-center justify-center">
-        <div className="absolute h-32 w-32 rounded-full border border-[#D4AF37]/80 animate-ping" />
-        <div className="absolute h-44 w-44 rounded-full border border-[#D4AF37]/60 animate-ping animation-delay-2000" />
+        <div className="absolute h-32 w-32 rounded-full border border-[#F472B6]/80 animate-ping" />
+        <div className="absolute h-44 w-44 rounded-full border border-[#F472B6]/60 animate-ping animation-delay-2000" />
         <div className="absolute h-56 w-56 rounded-full border border-white/40 animate-ping animation-delay-4000" />
-        <div className="relative rounded-full bg-gradient-to-r from-[#D4AF37] via-amber-200 to-[#D4AF37] px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-black shadow-md">
+        <div className="relative rounded-full bg-gradient-to-r from-[#EC4899] via-pink-200 to-[#EC4899] px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-black shadow-md">
           BENO PERFECT
         </div>
       </div>
@@ -133,7 +133,7 @@ function NeonBackdrop() {
         className="absolute inset-[-30%] opacity-40 blur-3xl animate-slow-spin"
         style={{
           background:
-            "conic-gradient(from 120deg at 50% 50%, rgba(34,211,238,0.2), rgba(244,114,182,0.08), rgba(34,197,94,0.18), rgba(34,211,238,0.2))",
+            "conic-gradient(from 120deg at 50% 50%, rgba(236,72,153,0.2), rgba(255,255,255,0.06), rgba(192,38,211,0.14), rgba(236,72,153,0.2))",
         }}
       />
       <div
@@ -148,10 +148,10 @@ function NeonBackdrop() {
         className="absolute inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(circle at 18% 18%, rgba(34,197,94,0.18), transparent 45%), radial-gradient(circle at 82% 12%, rgba(239,68,68,0.18), transparent 45%)",
+            "radial-gradient(circle at 18% 18%, rgba(244,114,182,0.18), transparent 45%), radial-gradient(circle at 82% 12%, rgba(236,72,153,0.16), transparent 45%)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-slate-900/40 to-indigo-700/10 mix-blend-screen" />
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-[#1a0a14]/40 to-fuchsia-700/10 mix-blend-screen" />
     </div>
   );
 }
@@ -165,7 +165,7 @@ function TouchRipples({ ripples }: { ripples: Ripple[] }) {
       {ripples.map((r) => (
         <span
           key={r.id}
-          className="ripple-dot absolute h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/14 ring-2 ring-cyan-200/30 backdrop-blur-sm shadow-[0_0_30px_rgba(34,211,238,0.35)]"
+          className="ripple-dot absolute h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-300/14 ring-2 ring-pink-200/30 backdrop-blur-sm shadow-[0_0_30px_rgba(236,72,153,0.35)]"
           style={{ left: r.x, top: r.y }}
         />
       ))}
@@ -180,11 +180,11 @@ function VictoryAura() {
         className="absolute inset-[-30%] rounded-full blur-3xl opacity-70 animate-slow-spin"
         style={{
           background:
-            "conic-gradient(from 45deg at 50% 50%, rgba(212,175,55,0.24), rgba(56,189,248,0.08), rgba(34,197,94,0.22), rgba(212,175,55,0.24))",
+            "conic-gradient(from 45deg at 50% 50%, rgba(236,72,153,0.24), rgba(255,255,255,0.08), rgba(244,114,182,0.22), rgba(236,72,153,0.24))",
         }}
       />
-      <div className="absolute left-6 top-6 h-28 w-28 rounded-full bg-amber-300/15 blur-3xl animate-float-slow" />
-      <div className="absolute right-8 bottom-10 h-24 w-24 rounded-full bg-sky-400/20 blur-3xl animate-float-slower" />
+      <div className="absolute left-6 top-6 h-28 w-28 rounded-full bg-pink-300/15 blur-3xl animate-float-slow" />
+      <div className="absolute right-8 bottom-10 h-24 w-24 rounded-full bg-fuchsia-400/20 blur-3xl animate-float-slower" />
       {[...Array(6)].map((_, idx) => (
         <div
           key={idx}
@@ -207,7 +207,7 @@ function WinRays() {
         {[...Array(14)].map((_, i) => (
           <div
             key={i}
-            className="absolute left-1/2 top-1/2 h-40 w-[2px] origin-bottom bg-gradient-to-b from-white/80 via-amber-200/60 to-transparent animate-ray-spin"
+            className="absolute left-1/2 top-1/2 h-40 w-[2px] origin-bottom bg-gradient-to-b from-white/80 via-pink-200/60 to-transparent animate-ray-spin"
             style={{
               transform: `rotate(${(360 / 14) * i}deg) translateY(-32px)`,
               animationDelay: `${i * 0.08}s`,
@@ -215,7 +215,7 @@ function WinRays() {
           />
         ))}
         <div className="absolute inset-6 rounded-full border border-white/25 blur-sm" />
-        <div className="absolute inset-10 rounded-full border border-amber-200/25 blur-sm animate-pulse-slow" />
+        <div className="absolute inset-10 rounded-full border border-pink-200/25 blur-sm animate-pulse-slow" />
       </div>
     </div>
   );
@@ -224,25 +224,25 @@ function WinRays() {
 function SideBeams() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden z-[2]">
-      <div className="absolute left-[-8%] top-0 h-full w-24 bg-gradient-to-r from-cyan-500/0 via-cyan-500/18 to-transparent blur-3xl animate-beam-slide" />
-      <div className="absolute right-[-8%] top-0 h-full w-24 bg-gradient-to-l from-amber-300/0 via-amber-300/14 to-transparent blur-3xl animate-beam-slide-slow" />
-      <div className="absolute inset-y-0 left-0 w-full bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.06),transparent_45%)]" />
+      <div className="absolute left-[-8%] top-0 h-full w-24 bg-gradient-to-r from-pink-500/0 via-pink-500/18 to-transparent blur-3xl animate-beam-slide" />
+      <div className="absolute right-[-8%] top-0 h-full w-24 bg-gradient-to-l from-rose-300/0 via-rose-300/14 to-transparent blur-3xl animate-beam-slide-slow" />
+      <div className="absolute inset-y-0 left-0 w-full bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.06),transparent_45%)]" />
     </div>
   );
 }
 
-function HolidayLights() {
-  const bulbs = ["#ef4444", "#22c55e", "#facc15", "#38bdf8"];
+function PinkGarland() {
+  const bulbs = ["#EC4899", "#FBCFE8", "#F472B6", "#ffffff"];
   return (
     <div aria-hidden className="pointer-events-none absolute left-12 right-12 top-2 z-40">
-      <div className="absolute inset-x-0 top-2 h-px bg-gradient-to-r from-transparent via-emerald-200/40 to-transparent" />
+      <div className="absolute inset-x-0 top-2 h-px bg-gradient-to-r from-transparent via-pink-200/40 to-transparent" />
       <div className="flex justify-between">
         {Array.from({ length: 14 }).map((_, i) => {
           const color = bulbs[i % bulbs.length];
           return (
             <span
               key={i}
-              className="h-2.5 w-2.5 rounded-full animate-holiday-twinkle"
+              className="h-2.5 w-2.5 rounded-full animate-garland-twinkle"
               style={{
                 background: color,
                 boxShadow: `0 0 12px ${color}88`,
@@ -256,11 +256,43 @@ function HolidayLights() {
   );
 }
 
-function HolidayScene() {
+function RibbonMark({
+  className,
+  stroke = "#EC4899",
+  highlight = "#F9A8D4",
+  opacity = 1,
+}: {
+  className: string;
+  stroke?: string;
+  highlight?: string;
+  opacity?: number;
+}) {
+  return (
+    <svg className={className} viewBox="0 0 100 120" style={{ opacity }}>
+      <path
+        d="M30 104 C55 72 68 46 50 20 C32 46 45 72 70 104"
+        fill="none"
+        stroke={stroke}
+        strokeWidth="13"
+        strokeLinecap="round"
+      />
+      <path
+        d="M30 104 C55 72 68 46 50 20 C32 46 45 72 70 104"
+        fill="none"
+        stroke={highlight}
+        strokeWidth="4.5"
+        strokeLinecap="round"
+        opacity="0.5"
+      />
+    </svg>
+  );
+}
+
+function PinkRibbonScene() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-72 overflow-hidden sm:h-80">
-      <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#0b1224]/80 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/20 via-white/10 to-transparent blur-xl" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#150711] via-[#220a19]/80 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-pink-300/20 via-pink-300/10 to-transparent blur-xl" />
       <svg
         className="absolute inset-x-0 bottom-0 h-32 w-full opacity-90"
         viewBox="0 0 1200 200"
@@ -268,62 +300,27 @@ function HolidayScene() {
       >
         <path
           d="M0 150 C120 120 240 170 360 145 C480 120 600 170 720 145 C840 120 960 170 1080 145 L1200 200 L0 200 Z"
-          fill="#f8fafc"
-          fillOpacity="0.2"
+          fill="#fbcfe8"
+          fillOpacity="0.16"
         />
       </svg>
-      <svg
-        className="absolute inset-x-0 bottom-0 h-52 w-full opacity-90"
-        viewBox="0 0 1200 200"
-        preserveAspectRatio="none"
-      >
-        <polygon points="40,200 100,70 160,200" fill="#14532d" />
-        <rect x="94" y="170" width="14" height="30" fill="#0f2f1c" />
-        <polygon points="210,200 280,60 350,200" fill="#166534" />
-        <rect x="274" y="170" width="14" height="30" fill="#0f2f1c" />
-        <polygon points="420,200 500,80 580,200" fill="#14532d" />
-        <rect x="494" y="170" width="14" height="30" fill="#0f2f1c" />
-        <polygon points="720,200 790,65 860,200" fill="#166534" />
-        <rect x="784" y="170" width="14" height="30" fill="#0f2f1c" />
-        <polygon points="910,200 990,85 1070,200" fill="#14532d" />
-        <rect x="984" y="170" width="14" height="30" fill="#0f2f1c" />
-      </svg>
-      <svg
-        className="absolute bottom-6 left-8 h-60 w-44 opacity-95"
-        viewBox="0 0 160 220"
-      >
-        <polygon points="80,10 150,150 10,150" fill="#1f7a3b" />
-        <polygon points="80,40 160,190 0,190" fill="#1b6b35" />
-        <rect x="70" y="185" width="20" height="28" fill="#0f2f1c" />
-        <polygon
-          points="80,4 86,18 102,20 90,30 94,46 80,38 66,46 70,30 58,20 74,18"
-          fill="#facc15"
-        />
-        <circle cx="55" cy="95" r="4" fill="#facc15" />
-        <circle cx="95" cy="110" r="4" fill="#ef4444" />
-        <circle cx="70" cy="130" r="4" fill="#38bdf8" />
-        <circle cx="105" cy="145" r="4" fill="#22c55e" />
-      </svg>
-      <svg
-        className="absolute bottom-8 right-10 h-52 w-40 opacity-90"
-        viewBox="0 0 140 200"
-      >
-        <polygon points="70,20 130,150 10,150" fill="#1c7338" />
-        <polygon points="70,45 140,180 0,180" fill="#166534" />
-        <rect x="60" y="178" width="18" height="24" fill="#0f2f1c" />
-        <circle cx="55" cy="95" r="3.5" fill="#facc15" />
-        <circle cx="80" cy="115" r="3.5" fill="#ef4444" />
-        <circle cx="65" cy="135" r="3.5" fill="#38bdf8" />
-      </svg>
-      <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <RibbonMark className="absolute bottom-6 left-8 h-60 w-44 drop-shadow-[0_0_24px_rgba(236,72,153,0.45)]" />
+      <RibbonMark
+        className="absolute bottom-8 right-10 h-52 w-40 drop-shadow-[0_0_20px_rgba(236,72,153,0.4)]"
+        opacity={0.9}
+      />
+      <RibbonMark className="absolute bottom-10 left-[30%] h-28 w-20" stroke="#F472B6" opacity={0.55} />
+      <RibbonMark className="absolute bottom-12 right-[30%] h-24 w-16" stroke="#F9A8D4" opacity={0.45} />
+      <RibbonMark className="absolute bottom-14 left-[52%] h-20 w-14" stroke="#FBCFE8" opacity={0.35} />
+      <div className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-r from-transparent via-pink-200/20 to-transparent" />
     </div>
   );
 }
 
 const WIN_THRESHOLD = 92;
 const PRIZES = [
-  "20% discount",
-  "40% discount",
+  "25% discount",
+  "50% discount",
   "1 hour free ride",
   "Yacht trip",
 ];
@@ -358,8 +355,8 @@ export default function Home() {
   const lineStyle = useMemo(
     () => ({
       width: 5,
-      color: "#06b6d4",
-      shadowColor: "rgba(56,189,248,0.35)",
+      color: "#F472B6",
+      shadowColor: "rgba(244,114,182,0.35)",
     }),
     []
   );
@@ -467,18 +464,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const bg = new Audio("/music-box-we-wish-you-a-merry-christmas-79501.mp3");
+    const bg = new Audio("/pink-october-bgm.mp3");
     bg.loop = true;
     bg.volume = 0.18;
     bg.preload = "auto";
     bgAudioRef.current = bg;
 
-    const win = new Audio("/tada-fanfare-356032.mp3");
+    const win = new Audio("/win-sparkle.mp3");
     win.volume = 0.8;
     win.preload = "auto";
     winAudioRef.current = win;
 
-    const lose = new Audio("/game-over-39-199830.mp3");
+    const lose = new Audio("/lose-soft.mp3");
     lose.volume = 0.7;
     lose.preload = "auto";
     loseAudioRef.current = lose;
@@ -502,8 +499,8 @@ export default function Home() {
     // Background
     ctx.save();
     const gradient = ctx.createLinearGradient(0, 0, w, h);
-    gradient.addColorStop(0, "#0b1224");
-    gradient.addColorStop(1, "#0f172a");
+    gradient.addColorStop(0, "#1c0a15");
+    gradient.addColorStop(1, "#120711");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
@@ -550,7 +547,7 @@ export default function Home() {
       // Core pass
       ctx.lineWidth = lineStyle.width;
       ctx.shadowBlur = 2;
-      ctx.strokeStyle = won ? "#22c55e" : lineStyle.color;
+      ctx.strokeStyle = won ? "#F9A8D4" : lineStyle.color;
       ctx.stroke();
       ctx.restore();
     }
@@ -561,7 +558,7 @@ export default function Home() {
       ctx.setLineDash([4, 12]);
       ctx.globalAlpha = 0.65;
       ctx.lineWidth = 2;
-      ctx.strokeStyle = "rgba(56,189,248,0.4)";
+      ctx.strokeStyle = "rgba(244,114,182,0.4)";
       ctx.beginPath();
       ctx.moveTo(center.x - radius, center.y);
       ctx.lineTo(center.x + radius, center.y);
@@ -569,7 +566,7 @@ export default function Home() {
       ctx.lineTo(center.x, center.y + radius);
       ctx.stroke();
       ctx.globalAlpha = 1;
-      ctx.fillStyle = "rgba(59,130,246,0.9)";
+      ctx.fillStyle = "rgba(236,72,153,0.9)";
       ctx.beginPath();
       ctx.arc(center.x, center.y, 4, 0, Math.PI * 2);
       ctx.fill();
@@ -756,22 +753,22 @@ export default function Home() {
   }, [activeScore, isDrawing, multiTouch, score]);
 
   const panelClass = [
-    "w-full max-w-xl rounded-3xl bg-gradient-to-br from-slate-900/80 via-slate-950/80 to-[#0a1628] p-4 shadow-[0_20px_70px_rgba(8,47,73,0.35)] ring-1 ring-cyan-500/25 backdrop-blur transition-shadow",
+    "w-full max-w-xl rounded-3xl bg-gradient-to-br from-[#2a0f1f]/80 via-[#190a14]/80 to-[#28101c] p-4 shadow-[0_20px_70px_rgba(131,24,67,0.35)] ring-1 ring-pink-500/25 backdrop-blur transition-shadow",
   ]
     .filter(Boolean)
     .join(" ");
   const panelStyle =
     won && flash
-      ? { boxShadow: "0 0 0 1px rgba(34,211,238,0.6), 0 18px 48px rgba(14,165,233,0.35)" }
+      ? { boxShadow: "0 0 0 1px rgba(244,114,182,0.6), 0 18px 48px rgba(236,72,153,0.35)" }
       : undefined;
   const canvasClass =
-    "block h-auto max-h-[60vh] w-full touch-none select-none rounded-3xl bg-gradient-to-b from-slate-950 via-[#0b1224] to-slate-900 outline-none aspect-square shadow-inner";
+    "block h-auto max-h-[60vh] w-full touch-none select-none rounded-3xl bg-gradient-to-b from-[#150811] via-[#1c0a15] to-[#120711] outline-none aspect-square shadow-inner";
 
   return (
-    <div className="relative flex h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-[#0a0a0a] to-black text-slate-50">
+    <div className="relative flex h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-[#1b0a15] via-[#0f060c] to-black text-slate-50">
       <BackgroundDeco />
-      <SnowOverlay />
-      <HolidayScene />
+      <PetalOverlay />
+      <PinkRibbonScene />
       <SideBeams />
       {celebrating && <Confetti />}
       <WinningModal
@@ -793,33 +790,34 @@ export default function Home() {
                 height={32}
                 className="h-8 w-auto"
               />
+              <RibbonMark className="h-8 w-6" />
               <div className="text-left">
                 <div className="flex items-center gap-2">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#D4AF37]">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#F472B6]">
                     Beno Circle Lab
                   </p>
-                  <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] uppercase tracking-[0.3em] text-emerald-100 ring-1 ring-emerald-300/40">
-                    Holiday
+                  <span className="rounded-full bg-pink-400/15 px-2 py-0.5 text-[9px] uppercase tracking-[0.3em] text-pink-100 ring-1 ring-pink-300/40">
+                    Pink October
                   </span>
                 </div>
                 <p className="text-xs text-slate-100">Luxury experiences, drawn by hand.</p>
               </div>
             </div>
           </div>
-          <h1 className="bg-gradient-to-r from-[#D4AF37] via-white to-[#D4AF37] bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl">
-            Circle Master
+          <h1 className="bg-gradient-to-r from-[#F472B6] via-white to-[#F472B6] bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl">
+            Circle Queen
           </h1>
           <p className="mt-3 text-sm text-slate-300 sm:text-base">
             Aim for a {WIN_THRESHOLD}%+ circle to unlock the Pulse Grid prizes.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs font-medium">
-            <span className="rounded-full bg-[#D4AF37]/10 px-3 py-1 text-[#D4AF37] ring-1 ring-[#D4AF37]/30">
+            <span className="rounded-full bg-pink-500/10 px-3 py-1 text-pink-200 ring-1 ring-pink-400/30">
               Supercars
             </span>
-            <span className="rounded-full bg-sky-500/10 px-3 py-1 text-sky-200 ring-1 ring-sky-400/30">
+            <span className="rounded-full bg-fuchsia-500/10 px-3 py-1 text-fuchsia-200 ring-1 ring-fuchsia-400/30">
               Yachts
             </span>
-            <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-emerald-200 ring-1 ring-emerald-400/30">
+            <span className="rounded-full bg-rose-500/10 px-3 py-1 text-rose-200 ring-1 ring-rose-400/30">
               Water toys
             </span>
           </div>
@@ -828,14 +826,14 @@ export default function Home() {
         <div ref={containerRef} className={panelClass} style={panelStyle}>
           <div className="relative overflow-hidden rounded-3xl">
             <NeonBackdrop />
-            <HolidayLights />
+            <PinkGarland />
             {touchRipples.length > 0 && <TouchRipples ripples={touchRipples} />}
             <canvas
               ref={canvasRef}
               className={canvasClass}
               style={{
                 touchAction: "none",
-                boxShadow: isDrawing ? "none" : "inset 0 0 26px rgba(34,211,238,0.15)",
+                boxShadow: isDrawing ? "none" : "inset 0 0 26px rgba(236,72,153,0.15)",
                 position: "relative",
                 zIndex: 20,
               }}
@@ -850,7 +848,7 @@ export default function Home() {
             {won && flash && <WinBurst />}
             {won && prize && !isDrawing && (
               <div className="pointer-events-none absolute inset-x-6 top-4 z-50 flex justify-center">
-                <div className="rounded-full bg-black/70 px-4 py-2 text-sm font-semibold text-[#D4AF37] ring-1 ring-[#D4AF37]/50 shadow-lg shadow-cyan-500/20 backdrop-blur">
+                <div className="rounded-full bg-black/70 px-4 py-2 text-sm font-semibold text-[#F9A8D4] ring-1 ring-[#F472B6]/50 shadow-lg shadow-pink-500/20 backdrop-blur">
                   {prize}
                 </div>
               </div>
@@ -889,7 +887,7 @@ export default function Home() {
             className={[
               "text-center text-base sm:text-lg",
               activeScore != null && activeScore >= 90
-                ? "text-[#D4AF37]"
+                ? "text-[#F472B6]"
                 : "text-slate-200",
             ].join(" ")}
           >
@@ -897,7 +895,7 @@ export default function Home() {
           </div>
           <button
             onClick={clearAll}
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#D4AF37] via-amber-400 to-[#D4AF37] px-6 py-3 text-sm font-semibold text-black shadow-lg transition hover:from-amber-300 hover:via-amber-200 hover:to-amber-300 active:translate-y-px"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#EC4899] via-pink-400 to-[#EC4899] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:from-pink-400 hover:via-pink-300 hover:to-pink-400 active:translate-y-px"
           >
             Clear / Try Again
           </button>

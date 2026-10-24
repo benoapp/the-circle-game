@@ -4,8 +4,8 @@ import type React from "react";
 import { useState } from "react";
 
 const PRIZES = [
-  "20% discount",
-  "40% discount",
+  "25% discount",
+  "50% discount",
   "1 hour free ride",
   "Yacht trip",
 ];
@@ -66,7 +66,7 @@ export default function FromPage() {
   const isWinner = form.winner === "yes";
 
   const inputClass =
-    "w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-200";
+    "w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-pink-400 focus:ring-2 focus:ring-pink-200";
 
   const handleChange = (field: keyof FormState, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -138,16 +138,16 @@ export default function FromPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-slate-50 via-white to-amber-50 text-slate-900">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-slate-50 via-white to-pink-50 text-slate-900">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 -top-20 h-80 w-80 rounded-full bg-gradient-to-tr from-amber-200 to-amber-400 opacity-35 blur-3xl animate-blob" />
-        <div className="absolute right-[-10%] top-24 h-72 w-72 rounded-full bg-gradient-to-tr from-sky-200 to-indigo-200 opacity-45 blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute left-1/3 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-emerald-200 to-teal-200 opacity-30 blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute -left-24 -top-20 h-80 w-80 rounded-full bg-gradient-to-tr from-pink-200 to-pink-400 opacity-35 blur-3xl animate-blob" />
+        <div className="absolute right-[-10%] top-24 h-72 w-72 rounded-full bg-gradient-to-tr from-rose-200 to-fuchsia-200 opacity-45 blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute left-1/3 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-pink-100 to-rose-200 opacity-30 blur-3xl animate-blob animation-delay-4000" />
       </div>
 
       <div className="relative mx-auto flex w-full max-w-4xl flex-col px-6 py-12 sm:px-10">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink-600">
             Beno Circle
           </p>
           <h1 className="mt-2 text-3xl font-semibold text-slate-900 sm:text-4xl">
@@ -157,6 +157,11 @@ export default function FromPage() {
             Fill in your details to join the draw. Winner status unlocks a prize
             selection.
           </p>
+          <div className="mt-4 flex justify-center">
+            <span className="rounded-full bg-pink-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-pink-700 ring-1 ring-pink-300">
+              Pink October
+            </span>
+          </div>
         </div>
 
         <form
@@ -267,7 +272,7 @@ export default function FromPage() {
                     type="checkbox"
                     checked={form.interests.includes(option)}
                     onChange={() => toggleInterest(option)}
-                    className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-400"
+                    className="h-4 w-4 rounded border-slate-300 text-pink-600 focus:ring-pink-400"
                   />
                   <span>{option}</span>
                 </label>
@@ -321,7 +326,7 @@ export default function FromPage() {
             <button
               type="submit"
               disabled={submitStatus === "submitting"}
-              className="inline-flex items-center justify-center rounded-lg bg-[#0f4c5c] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0b3f4d] disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center justify-center rounded-lg bg-[#DB2777] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#BE185D] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitStatus === "submitting" ? "Submitting..." : "Submit"}
             </button>

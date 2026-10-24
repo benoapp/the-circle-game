@@ -13,18 +13,17 @@ export default function WinningModal({ isOpen, prize, onClose }: WinningModalPro
         }`}
     >
       <div
-        className={`relative w-full max-w-md transform overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900 to-black p-1 text-center shadow-2xl ring-1 ring-[#D4AF37] transition-all duration-700 ${isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-8"
+        className={`relative w-full max-w-md transform overflow-hidden rounded-2xl bg-gradient-to-b from-[#2a0f1f] to-black p-1 text-center shadow-2xl ring-1 ring-[#EC4899] transition-all duration-700 ${isOpen ? "scale-100 translate-y-0" : "scale-95 translate-y-8"
           }`}
       >
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="relative rounded-xl bg-black/90 px-6 py-10">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#D4AF37]/20 ring-1 ring-[#D4AF37]">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#EC4899]/20 ring-1 ring-[#EC4899]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
-              stroke="#D4AF37"
+              stroke="#F472B6"
               className="h-10 w-10"
             >
               <path
@@ -35,21 +34,21 @@ export default function WinningModal({ isOpen, prize, onClose }: WinningModalPro
             </svg>
           </div>
 
-          <h2 className="mb-2 text-3xl font-bold text-[#D4AF37]">CONGRATULATIONS!</h2>
+          <h2 className="mb-2 text-3xl font-bold text-[#F472B6]">CONGRATULATIONS!</h2>
           <p className="mb-6 text-slate-300">You&apos;ve drawn a perfect circle and won:</p>
 
-          <div className="mb-8 rounded-lg border border-[#D4AF37]/30 bg-[#D4AF37]/10 py-4">
+          <div className="mb-8 rounded-lg border border-[#EC4899]/30 bg-[#EC4899]/10 py-4">
             <p className="text-2xl font-bold text-white">{prize}</p>
           </div>
 
           <button
             onClick={onClose}
-            className="w-full rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-bold text-black transition hover:bg-[#b5952f] active:scale-95"
+            className="w-full rounded-full bg-[#EC4899] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#DB2777] active:scale-95"
           >
             CLAIM PRIZE
           </button>
         </div>
-        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-[#D4AF37]/30" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl border border-[#EC4899]/30" />
       </div>
     </div>
   );

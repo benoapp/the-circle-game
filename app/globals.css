@@ -70,7 +70,7 @@ body {
   60% { opacity: 0.35; }
   100% { transform: translate(-50%, -50%) scale(2.3); opacity: 0; }
 }
-.ripple-dot { animation: ripplePulse 1s ease-out forwards; box-shadow: 0 0 20px rgba(56, 189, 248, 0.55); }
+.ripple-dot { animation: ripplePulse 1s ease-out forwards; box-shadow: 0 0 20px rgba(236, 72, 153, 0.55); }
 
 @keyframes raySpin {
   0% { transform: rotate(0deg) translateY(-32px); opacity: 0.6; }
@@ -93,27 +93,27 @@ body {
 .animate-beam-slide { animation: beamSlide 6s ease-in-out infinite alternate; }
 .animate-beam-slide-slow { animation: beamSlide 9s ease-in-out infinite alternate-reverse; }
 
-@keyframes snowDrift {
+@keyframes petalDrift {
   0% { background-position: 0 -80px, 30px -140px; }
   100% { background-position: 0 220px, 60px 280px; }
 }
-.snow-overlay {
+.petal-overlay {
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.45) 1px, transparent 1px),
-    radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+    radial-gradient(rgba(249, 168, 212, 0.5) 1.2px, transparent 1.2px),
+    radial-gradient(rgba(236, 72, 153, 0.3) 1px, transparent 1px);
   background-size: 120px 120px, 180px 180px;
-  animation: snowDrift 20s linear infinite;
+  animation: petalDrift 20s linear infinite;
 }
-.snow-overlay-large {
+.petal-overlay-large {
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.45) 2px, transparent 2px),
-    radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    radial-gradient(rgba(251, 207, 232, 0.5) 2px, transparent 2px),
+    radial-gradient(rgba(244, 114, 182, 0.25) 1.2px, transparent 1.2px);
   background-size: 180px 180px, 260px 260px;
-  animation: snowDrift 26s linear infinite;
+  animation: petalDrift 26s linear infinite;
 }
 
-@keyframes holidayTwinkle {
+@keyframes garlandTwinkle {
   0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.6; }
   50% { transform: translateY(-1px) scale(1.15); opacity: 1; }
 }
-.animate-holiday-twinkle { animation: holidayTwinkle 2.6s ease-in-out infinite; }
+.animate-garland-twinkle { animation: garlandTwinkle 2.6s ease-in-out infinite; }

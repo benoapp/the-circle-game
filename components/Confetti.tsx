@@ -44,7 +44,7 @@ export default function Confetti() {
 
     const spawnBurst = () => {
       const origin = emitters[Math.floor(Math.random() * emitters.length)];
-      const count = 55;
+      const count = 45;
       for (let i = 0; i < count; i++) {
         const maxLife = 2200 + Math.random() * 800;
         particles.push({
@@ -62,13 +62,21 @@ export default function Confetti() {
         });
       }
       // Keep particle count in check
-      if (particles.length > 2000) {
-        particles = particles.slice(particles.length - 2000);
+      if (particles.length > 1200) {
+        particles = particles.slice(particles.length - 1200);
       }
     };
 
+    const SPAWN_MS = 3200;
+    const start = performance.now();
     spawnBurst();
-    const burstTimer = window.setInterval(spawnBurst, 300);
+    const burstTimer = window.setInterval(() => {
+      if (performance.now() - start > SPAWN_MS) {
+        window.clearInterval(burstTimer);
+        return;
+      }
+      spawnBurst();
+    }, 300);
 
     let animationId: number;
     let last = performance.now();
@@ -102,19 +110,28 @@ export default function Confetti() {
         return true;
       });
 
-      // Orbiting sparks for extra motion
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      for (let i = 0; i < 18; i++) {
-        const angle = (now / 400 + i * 20) * (Math.PI / 180);
-        const radius = 40 + ((now / 20) % 120);
-        const x = centerX + Math.cos(angle) * radius;
-        const y = centerY + Math.sin(angle) * radius;
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(255,255,255,0.35)";
-        ctx.globalAlpha = 0.8;
-        ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-        ctx.fill();
+      const spawning = now - start < SPAWN_MS;
+      if (spawning) {
+        // Orbiting sparks for extra motion
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        for (let i = 0; i < 18; i++) {
+          const angle = (now / 400 + i * 20) * (Math.PI / 180);
+          const radius = 40 + ((now / 20) % 120);
+          const x = centerX + Math.cos(angle) * radius;
+          const y = centerY + Math.sin(angle) * radius;
+          ctx.beginPath();
+          ctx.fillStyle = "rgba(255,255,255,0.35)";
+          ctx.globalAlpha = 0.8;
+          ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Once the celebration is over and all pieces fell, stop the loop.
+      if (!spawning && particles.length === 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
       }
 
       animationId = requestAnimationFrame(animate);

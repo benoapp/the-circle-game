@@ -776,6 +776,11 @@ export default function Home() {
         prize={prize}
         onClose={() => {
           setModalOpen(false);
+          setFlash(false);
+          if (flashTimeoutRef.current) {
+            window.clearTimeout(flashTimeoutRef.current);
+            flashTimeoutRef.current = null;
+          }
         }}
       />
 
@@ -843,8 +848,8 @@ export default function Home() {
               onPointerCancel={onPointerUp}
               onPointerLeave={onPointerLeave}
             />
-            {won && <VictoryAura />}
-            {won && <WinRays />}
+            {won && flash && <VictoryAura />}
+            {won && flash && <WinRays />}
             {won && flash && <WinBurst />}
             {won && prize && !isDrawing && (
               <div className="pointer-events-none absolute inset-x-6 top-4 z-50 flex justify-center">
